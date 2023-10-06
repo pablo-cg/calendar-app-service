@@ -2,6 +2,7 @@ import express from 'express';
 import 'dotenv/config';
 import auth from './routes/auth.js';
 import { dbConnection } from './database/config.js';
+import cors from 'cors';
 
 const PORT = process.env.PORT;
 
@@ -10,6 +11,9 @@ const app = express();
 
 // Inicializacion de BD
 dbConnection();
+
+// CORS
+app.use(cors());
 
 // Generar directorio publico
 app.use(express.static('public'));
