@@ -2,16 +2,18 @@ import { response } from 'express';
 import { Evento } from '../models/evento.js';
 
 export async function getEvents(req, resp = response) {
+  const events = await Evento.find().populate('user', 'name');
+
   resp.status(200).json({
     ok: true,
-    msg: 'getEvents',
+    events,
   });
 }
 
 export async function createEvent(req, resp = response) {
   try {
     const event = new Evento(req.body);
-    
+
     event.user = req.uid;
 
     const newEvent = await event.save();
