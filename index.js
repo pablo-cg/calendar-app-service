@@ -1,6 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
 import auth from './routes/auth.js';
+import events from './routes/events.js';
 import { dbConnection } from './database/config.js';
 import cors from 'cors';
 
@@ -23,11 +24,9 @@ app.use(express.json());
 
 // Endpoints
 app.use('/api/auth', auth);
+app.use('/api/events', events);
 
 // Inicializar app
 app.listen(PORT, () => {
   console.log(`🚀 ~ Servidor corriendo en el puerto: ${PORT} ~`);
 });
-
-// mern_user
-// YdhWBxW60ENdSY0P
