@@ -28,10 +28,10 @@ export async function register(req, resp = response) {
 
     resp.status(201).json({
       ok: true,
+      token,
       user: {
         uid: usuario.id,
         name: usuario.name,
-        token,
       },
     });
   } catch (error) {
@@ -70,10 +70,10 @@ export async function login(req, resp = response) {
 
     resp.status(200).json({
       ok: true,
+      token,
       user: {
         uid: usuario.id,
         name: usuario.name,
-        token,
       },
     });
   } catch (error) {
@@ -94,5 +94,6 @@ export async function renewToken(req, resp = response) {
   resp.json({
     ok: true,
     token,
+    user: { uid, name },
   });
 }
